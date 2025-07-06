@@ -1,0 +1,1 @@
+export const EMPTY_FAVORITES_MESSAGE = "No hay favoritos aún.";
