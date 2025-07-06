@@ -32,6 +32,29 @@ App demo **Android‑only** construida con React Native (Expo 53, managed). Mu
 
 ---
 
+## Arquitectura y patrón de diseño
+
+**Feature-Sliced Architecture (FSA)** para la organización de carpetas + **Flux** (implementado con **Redux Toolkit & RTK Query**) para el flujo de datos.
+
+### ¿Qué implica?
+
+1. **Feature-Sliced** → cada funcionalidad vive en su propia carpeta (`posts`, `auth`, …) con UI, lógica y tests juntos.  
+2. **Flux/Redux** → flujo unidireccional de datos: `action → slice → state → UI`  
+   RTK Toolkit reduce el boilerplate y RTK Query añade *caching* + *data-fetching* tipado.
+
+### ¿Por qué es óptimo para este proyecto?
+
+| Ventaja | Explicación breve |
+| ------- | ----------------- |
+| **Aislamiento de features** | Modificar `posts` no afecta `auth`; menos riesgo de regressions. |
+| **Escalabilidad lineal** | Agregar nueva funcionalidad = copiar carpeta; no crece complejidad global. |
+| **Pruebas localizadas** | Jest sólo mockea dentro del feature; suites pequeñas y rápidas. |
+| **Onboarding rápido** | Cualquier dev encuentra TODO lo de una feature en un único lugar. |
+| **Depuración sencilla** | Flux + DevTools muestran la historia de estados sin *props drilling*. |
+| **Menos dependencias** | RTK Query evita Axios/React Query extras, manteniendo peso ligero. |
+
+---
+
 ## Decisiones clave
 
 | Área                                         | Elección                                                                                                      | Porqué                                                                                                                                              |
